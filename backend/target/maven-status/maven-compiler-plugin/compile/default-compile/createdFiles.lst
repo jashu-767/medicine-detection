@@ -1,0 +1,6 @@
+com\medicinedetection\controller\MedicineController.class
+com\medicinedetection\MedicineBackendApplication.class
+com\medicinedetection\repository\MedicineRepository.class
+com\medicinedetection\service\MedicineService.class
+com\medicinedetection\util\MultipartInputStreamFileResource.class
+com\medicinedetection\model\Medicine.class
