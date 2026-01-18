@@ -9,22 +9,22 @@ import os
 
 app = FastAPI()
 
-# Allow frontend access
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Replace with your frontend URL in production
+    allow_origins=["*"],  
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Load model
+
 model = load_model("C:/model/medicine_model.h5")
 
-# Get class names from training folder
+
 train_dir = "C:/model_split/train"
 class_names = sorted(os.listdir(train_dir))
 
-# Dictionary for medicine usage info
+
 medicine_usage = {
     "aggrex": "used to treat peptic ulcers, irritable bowel syndrome (IBS), and enterocolitis by reducing stomach acid and relieving abdominal cramps",
     "paramol": "Relieves pain, fever, inflammation from arthritis, back pain, toothache, and headaches.",
@@ -47,7 +47,7 @@ medicine_usage = {
     "mucosta": "Treats gastric ulcers, acute/chronic gastritis, and protects gastric mucosa from erosion, bleeding, and inflammation.",
     "selokenz": "Treats high blood pressure, angina, irregular heart rhythms, heart failure, and prevents migraines and heart attacks.",
     "zenta": "Treats acid reflux, heartburn, peptic ulcers, GERD, and Zollinger-Ellison syndrome by reducing stomach acid production.",
-    # Add more medicines here as needed
+    
 }
 
 @app.post("/predict/")
