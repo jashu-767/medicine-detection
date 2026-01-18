@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:3000")  // Allow React frontend to call backend
+@CrossOrigin(origins = "http://localhost:3000")  
 @RestController
 @RequestMapping("/api/medicine")
 public class MedicineController {
@@ -18,7 +18,7 @@ public class MedicineController {
     @PostMapping("/detect")
     public ResponseEntity<?> detectMedicine(@RequestParam("file") MultipartFile file) {
         try {
-            String mlUrl = "http://localhost:8000/predict";  // ML server endpoint
+            String mlUrl = "http://localhost:8000/predict"; 
 
             RestTemplate restTemplate = new RestTemplate();
             HttpHeaders headers = new HttpHeaders();
@@ -30,7 +30,7 @@ public class MedicineController {
             HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
             ResponseEntity<Map> response = restTemplate.postForEntity(mlUrl, requestEntity, Map.class);
 
-            return ResponseEntity.ok(response.getBody());  // Return ML server response to frontend
+            return ResponseEntity.ok(response.getBody());  
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(Map.of("error", "Failed to process file", "details", e.getMessage()));
